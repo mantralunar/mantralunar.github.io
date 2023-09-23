@@ -42,4 +42,4 @@ Comment=DOOM 3 BFG
 EOF
 
 
-env OUTPUT=RBDOOM_3_BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+env OUTPUT=~/Desktop/RBDOOM_3_BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
