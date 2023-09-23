@@ -2,7 +2,6 @@
 cd ~/Desktop/RBDOOM-3-BFG
 
 rm -Rf ~/Desktop/RBDOOM-3-BFG/build
-rm -Rf ~/Desktop/RBDOOM-3-BFG/AppDir
 
 
 git fetch origin
@@ -43,4 +42,4 @@ Comment=DOOM 3 BFG
 EOF
 
 
-env OUTPUT=RBDOOM_3_BFG-x86_64.AppImage ./linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+env OUTPUT=RBDOOM_3_BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
