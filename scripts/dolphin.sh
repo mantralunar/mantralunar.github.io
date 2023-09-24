@@ -30,4 +30,4 @@ Comment=A Wii/GameCube Emulator
 EOF
 
 
-env OUTPUT=Dolphin_Emulator-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage
+env OUTPUT=~/Desktop/Dolphin_Emulator-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage
