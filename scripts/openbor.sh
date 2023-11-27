@@ -1,6 +1,6 @@
 #!/bin/sh
 cd ~/Desktop/openbor/
-rm -R engines/releases
+rm -R engine/releases
 git pull
 
 cd engine
