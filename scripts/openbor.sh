@@ -34,4 +34,4 @@ ${0%/*}/usr/bin/OpenBOR
 EOF
 
 
-env OUTPUT=~/Desktop/OpenBOR-x86_64.AppImmage ~/linuxdeploy-x86_64.AppImage --appdir releases/AppDir/ --output appimage
+env OUTPUT=~/Desktop/OpenBOR-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir releases/AppDir/ --output appimage
