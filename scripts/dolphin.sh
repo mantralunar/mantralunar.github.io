@@ -3,9 +3,22 @@ cd ~/Desktop/dolphin
 rm -Rf ~/Desktop/dolphin/Build
 git pull
 
-git submodule update --init --recursive Externals/xxhash Externals/fmt Externals/mGBA Externals/spirv_cross Externals/zlib-ng Externals/libspng Externals/VulkanMemoryAllocator Externals/cubeb Externals/implot Externals/gtest Externals/rcheevos
-
-git pull --recurse-submodules
+git submodule update --init --recursive \
+Externals/mGBA \
+Externals/spirv_cross \
+Externals/zlib-ng \
+Externals/libspng \
+Externals/VulkanMemoryAllocator \
+Externals/cubeb \
+Externals/implot \
+Externals/gtest \
+Externals/rcheevos \
+Externals/fmt \
+Externals/lz4 \
+Externals/xxhash \
+Externals/enet \
+Externals/SDL \
+&& git pull --recurse-submodules
 
 
 mkdir Build && cd Build
