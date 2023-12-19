@@ -8,7 +8,6 @@ mkdir -p ~/Desktop/perfect_dark/build/AppDir/usr/bin/
 mkdir -p ~/Desktop/perfect_dark/build/AppDir/usr/share/applications
 mkdir -p ~/Desktop/perfect_dark/build/AppDir/usr/share/icons/hicolor/512x512
 cp ~/Desktop/perfect_dark/build/ntsc-final-port/pd.exe ~/Desktop/perfect_dark/build/AppDir/usr/bin/pd
-cp ~/Downloads/pd-i686-linux/data/pd.jpg ~/Desktop/perfect_dark/build/AppDir/usr/share/icons/hicolor/512x512
 curl https://raw.githubusercontent.com/mantralunar/mantralunar.github.io/main/img/pd.png -o ~/Desktop/perfect_dark/build/AppDir/usr/share/icons/hicolor/512x512/pd.png
 
 
