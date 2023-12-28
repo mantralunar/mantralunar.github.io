@@ -1,9 +1,9 @@
 #!/bin/bash
-cd ~/Desktop/omnispeak
+cd ~/Projects/omnispeak
 
-rm -Rf ~/Desktop/omnispeak/obj
-rm -Rf ~/Desktop/omnispeak/bin
-rm -Rf ~/Desktop/omnispeak/AppDir
+rm -Rf obj
+rm -Rf bin
+rm -Rf AppDir
 
 
 git fetch origin
@@ -14,8 +14,6 @@ git clean -xdf
 make -C ./src XDGUSERPATH=1
 
 ###Prepare AppImage Directory
-cd ~/Desktop/omnispeak
-rm -Rf AppDir
 mkdir -p AppDir/usr/bin
 mkdir -p AppDir/usr/share/applications
 mkdir -p AppDir/usr/share/icons/hicolor/scalable
