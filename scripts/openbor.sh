@@ -1,5 +1,5 @@
 #!/bin/sh
-cd ~/Desktop/openbor/
+cd ~/Projects/openbor/
 rm -R engine/releases
 git pull
 
