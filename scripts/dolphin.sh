@@ -1,6 +1,6 @@
 #!/bin/bash
-cd ~/Desktop/dolphin
-rm -Rf ~/Desktop/dolphin/Build
+cd ~/Projects/dolphin
+rm -Rf Build
 git pull
 
 git submodule update --init --recursive \
