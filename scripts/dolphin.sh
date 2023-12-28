@@ -42,5 +42,5 @@ GenericName=Wii/GameCube Emulator
 Comment=A Wii/GameCube Emulator
 EOF
 
-
+rm -Rf ~/Desktop/Dolphin_Emulator-x86_64.AppImage
 env OUTPUT=~/Desktop/Dolphin_Emulator-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage
