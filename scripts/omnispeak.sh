@@ -41,4 +41,5 @@ cd ${0%/*}/usr/bin
 ./omnispeak /GAMEPATH $HOME/.local/share/"Commander Keen"/data/ $1 $2
 EOF
 
+rm -Rf ~/Desktop/Omnispeak-x86_64.AppImage
 env OUTPUT=~/Desktop/Omnispeak-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
