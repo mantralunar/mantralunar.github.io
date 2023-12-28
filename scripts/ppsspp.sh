@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/Desktop/ppsspp
+cd ~/Projects/ppsspp
 rm -Rf Build
 git pull
 
