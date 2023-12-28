@@ -1,7 +1,7 @@
 #!/bin/bash
-cd ~/Desktop/RBDOOM-3-BFG
+cd ~/Projects/RBDOOM-3-BFG
 
-rm -Rf ~/Desktop/RBDOOM-3-BFG/build
+rm -Rf build
 
 
 git fetch origin
