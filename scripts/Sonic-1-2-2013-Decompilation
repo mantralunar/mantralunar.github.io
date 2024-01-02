@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 cd ~/Projects/Sonic-1-2-2013-Decompilation/
 rm -Rf build
 git pull
