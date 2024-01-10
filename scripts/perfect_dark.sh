@@ -6,9 +6,9 @@ make -f Makefile.port TARGET_PLATFORM=i686-linux
 
 mkdir -p build/AppDir/usr/bin/
 mkdir -p build/AppDir/usr/share/applications
-mkdir -p build/AppDir/usr/share/icons/hicolor/512x512
+mkdir -p build/AppDir/usr/share/icons/hicolor/512x512/apps
 cp build/ntsc-final-port/pd.exe build/AppDir/usr/bin/pd
-curl https://raw.githubusercontent.com/mantralunar/mantralunar.github.io/main/img/pd.png -o build/AppDir/usr/share/icons/hicolor/512x512/pd.png
+curl https://raw.githubusercontent.com/mantralunar/mantralunar.github.io/main/img/pd.png -o build/AppDir/usr/share/icons/hicolor/512x512/apps/pd.png
 
 
 cat > build/AppDir/usr/share/applications/pd.desktop <<\EOF
