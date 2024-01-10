@@ -9,9 +9,7 @@ sed -e "s|-Werror||g" -i Makefile
 
 mkdir -p releases/AppDir/usr/bin
 mkdir -p releases/AppDir/usr/share/applications
-mkdir -p releases/AppDir/usr/share/icons/hicolor/512x512
 cp releases/LINUX_AMD64/OpenBOR/OpenBOR releases/AppDir/usr/bin
-curl -o releases/AppDir/usr/share/icons/hicolor/512x512/openbor.png https://images.igdb.com/igdb/image/upload/t_cover_big/ge42.png 
 
 cat > releases/AppDir/usr/share/applications/openBOR.desktop <<\EOF
 [Desktop Entry]
@@ -19,7 +17,7 @@ Version=1.0
 Name=OpenBOR
 Exec=OpenBOR
 Terminal=false
-Icon=openbor
+Icon=OpenBOR_Icon_128x128
 Type=Application
 Categories=Game;
 X-AppImage-Integrate=false
@@ -34,4 +32,4 @@ ${0%/*}/usr/bin/OpenBOR
 EOF
 
 rm -f ~/Desktop/OpenBOR-x86_64.AppImage
-env OUTPUT=~/Desktop/OpenBOR-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir releases/AppDir/ --output appimage
+env OUTPUT=~/Desktop/OpenBOR-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir releases/AppDir/ --icon-file resources/OpenBOR_Icon_128x128.png --output appimage
