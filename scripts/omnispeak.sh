@@ -16,7 +16,7 @@ make -C ./src XDGUSERPATH=1
 ###Prepare AppImage Directory
 mkdir -p AppDir/usr/bin
 mkdir -p AppDir/usr/share/applications
-mkdir -p AppDir/usr/share/icons/hicolor/scalable
+mkdir -p AppDir/usr/share/icons/hicolor/64x64
 cp unixicon.png AppDir/usr/share/icons/hicolor/scalable/unixicon.png
 
 cp bin/* AppDir/usr/bin/
@@ -42,4 +42,4 @@ cd ${0%/*}/usr/bin
 EOF
 
 rm -Rf ~/Desktop/Omnispeak-x86_64.AppImage
-env OUTPUT=~/Desktop/Omnispeak-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+env OUTPUT=~/Desktop/Omnispeak-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --icon-file unixicon.png --output appimage
