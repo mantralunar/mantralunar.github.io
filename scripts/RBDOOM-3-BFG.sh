@@ -24,8 +24,8 @@ mkdir -p AppDir/usr/bin
 mv RBDoom3BFG AppDir/usr/bin
 cp -R ../base AppDir/usr/bin
 
-mkdir -p AppDir/usr/share/icons/hicolor/scalable
-icns2png -x ../neo/sys/posix/res/Doom3BFG.icns -o AppDir/usr/share/icons/hicolor/scalable/
+mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
+icns2png -x ../neo/sys/posix/res/Doom3BFG.icns -o AppDir/usr/share/icons/hicolor/256x256/apps/
 
 mkdir -p AppDir/usr/share/applications
 cat > AppDir/usr/share/applications/DOOM-3-BFG.desktop <<\EOF
