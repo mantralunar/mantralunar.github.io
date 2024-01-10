@@ -10,7 +10,6 @@ cmake --build build --config release
 
 mkdir -p build/AppDir/usr/bin
 mkdir -p build/AppDir/usr/share/applications
-mkdir -p build/AppDir/usr/share/icons/hicolor/512x512
 cp build/RSDKv4 build/AppDir/usr/bin
 cp flatpak/com.sega.Sonic1.svg build/AppDir/usr/share/icons/hicolor/512x512/com.sega.Sonic1.svg
 
@@ -35,4 +34,4 @@ ${0%/*}/usr/bin/RSDKv4
 EOF
 
 rm -f ~/Desktop/Sonic1_RSDKv4-x86_64.AppImage
-env OUTPUT=~/Desktop/Sonic1_RSDKv4-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --output appimage
+env OUTPUT=~/Desktop/Sonic1_RSDKv4-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --icon-file flatpak/com.sega.Sonic1.svg --output appimage
