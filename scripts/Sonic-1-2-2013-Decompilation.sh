@@ -8,10 +8,7 @@ git submodule update --init
 cmake -B build -DRETRO_DISABLE_PLUS=on
 cmake --build build --config release
 
-mkdir -p build/AppDir/usr/bin
-mkdir -p build/AppDir/usr/share/applications
-cp build/RSDKv4 build/AppDir/usr/bin
-cp flatpak/com.sega.Sonic1.svg build/AppDir/usr/share/icons/hicolor/512x512/com.sega.Sonic1.svg
+mkdir -p build/AppDir/usr/share/applications/
 
 cat > build/AppDir/usr/share/applications/RSDKv4.desktop <<\EOF
 [Desktop Entry]
@@ -34,4 +31,4 @@ ${0%/*}/usr/bin/RSDKv4
 EOF
 
 rm -f ~/Desktop/Sonic1_RSDKv4-x86_64.AppImage
-env OUTPUT=~/Desktop/Sonic1_RSDKv4-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --icon-file flatpak/com.sega.Sonic1.svg --output appimage
+env OUTPUT=~/Desktop/Sonic1_RSDKv4-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --executable build/RSDKv4 --icon-file flatpak/com.sega.Sonic1.svg --output appimage
