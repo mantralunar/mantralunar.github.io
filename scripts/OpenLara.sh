@@ -1,3 +1,10 @@
+cd ~/Projects/OpenLara/
+rm -Rf bin
+git fetch origin
+git checkout master
+git reset --hard origin/master
+git clean -xdf
+
 cd ~/Projects/OpenLara/src/platform/nix
 ./build.sh
 
