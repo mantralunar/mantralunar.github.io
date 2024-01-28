@@ -1,6 +1,6 @@
 {
 	"title": "Streets of Rage",
-	"target": "/run/media/mmcblk0p1/Emulators/OpenBOR.AppImage",
+	"target": "/run/media/mmcblk0p1/Emulators/openbor-x86_64.AppImage",
 	"startIn": "/run/media/mmcblk0p1/Emulators",
 	"launchOptions": ""
 }
