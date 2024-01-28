@@ -1,0 +1,6 @@
+{
+	"title": "Ship Of Harkinian",
+	"target": "/run/media/mmcblk0p1/Emulators/soh.AppImage",
+	"startIn": "/home/deck/.local/share/soh",
+	"launchOptions": ""
+}

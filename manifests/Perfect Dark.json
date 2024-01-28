@@ -1,0 +1,6 @@
+{
+	"title": "Perfect Dark",
+	"target": "/run/media/mmcblk0p1/Emulators/pd.AppImage",
+	"startIn": "/run/media/mmcblk0p1/Emulators",
+	"launchOptions": ""
+}

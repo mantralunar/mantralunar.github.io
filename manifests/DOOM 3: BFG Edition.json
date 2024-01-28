@@ -1,0 +1,6 @@
+{
+	"title": "DOOM 3: BFG Edition",
+	"target": "/run/media/mmcblk0p1/Emulators/RBDOOM-3-BFG.AppImage",
+	"startIn": "/run/media/mmcblk0p1/Emulators",
+	"launchOptions": ""
+}
