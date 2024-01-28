@@ -8,10 +8,10 @@ git clean -xdf
 cd ~/Projects/OpenLara/src/platform/nix
 ./build.sh
 
-cd ../../../bin/
+cd ~/Projects/OpenLara/bin/
 mkdir -p AppDir/usr/share/applications/
 mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps/
-cp ../src/platform/3ds/icon.png AppDir/usr/share/icons/hicolor/scalable/apps/OpenLara.png
+cp ../src/platform/3ds/icon.png AppDir/usr/share/icons/hicolor/256x256/apps/OpenLara.png
 
 cat > AppDir/usr/share/applications/OpenLara.desktop <<\EOF
 [Desktop Entry]
