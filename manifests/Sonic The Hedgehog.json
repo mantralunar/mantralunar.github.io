@@ -1,1 +1,6 @@
-
+{
+	"title": "Sonic the Hedgehog",
+	"target": "/run/media/mmcblk0p1/Emulators/OpenBOR.AppImage",
+	"startIn": "/run/media/mmcblk0p1/Emulators",
+	"launchOptions": ""
+}
