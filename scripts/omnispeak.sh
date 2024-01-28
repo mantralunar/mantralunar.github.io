@@ -40,4 +40,4 @@ cd ${0%/*}/usr/bin
 ./omnispeak /GAMEPATH $HOME/.local/share/"Commander Keen"/data/ $1 $2
 EOF
 
-env OUTPUT=~/Desktop/Omnispeak-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --icon-file unixicon.png --output appimage
+env OUTPUT=~/Desktop/omnispeak-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --icon-file unixicon.png --output appimage
