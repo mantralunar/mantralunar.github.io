@@ -2,10 +2,8 @@
 cd ~/Projects/openbor/
 rm -R engine/releases
 
-#git reset --hard 5c82614
-#git reset --hard 5c8261444de6b61f8e2ce6e79e3d86a2949e55bd
+git reset --hard b1676f9
 
-git reset --hard 3bae1dd75d9297cc412cd787b03ccf6375b85ebf
 
 cd engine
 sed -e "s|-Werror||g" -i Makefile
