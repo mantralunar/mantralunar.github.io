@@ -23,5 +23,5 @@ Categories=Game;
 X-AppImage-Integrate=false
 EOF
 
-rm ~/Desktop/pd-x86_64.AppImage
-env OUTPUT=~/Desktop/pd-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --output appimage
+rm ~/Desktop/perfect_dark-x86_64.AppImage
+env OUTPUT=~/Desktop/perfect_dark-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --output appimage
