@@ -41,5 +41,5 @@ GenericName=DOOM 3 BFG
 Comment=DOOM 3 BFG
 EOF
 
-rm -Rf ~/Desktop/RBDOOM_3_BFG-x86_64.AppImage
-env OUTPUT=~/Desktop/RBDOOM_3_BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+rm -Rf ~/Desktop/RBDOOM-3-BFG-x86_64.AppImage
+env OUTPUT=~/Desktop/RBDOOM-3-BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
