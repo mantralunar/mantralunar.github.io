@@ -3,21 +3,10 @@ cd ~/Projects/dolphin
 rm -Rf Build
 git pull
 
-git submodule update --init --recursive \
-Externals/mGBA \
-Externals/spirv_cross \
-Externals/zlib-ng \
-Externals/libspng \
-Externals/VulkanMemoryAllocator \
-Externals/cubeb \
-Externals/implot \
-Externals/gtest \
-Externals/rcheevos \
-Externals/fmt \
-Externals/lz4 \
-Externals/xxhash \
-Externals/enet \
-Externals/SDL \
+git -c submodule."Externals/Qt".update=none \
+-c submodule."Externals/FFmpeg-bin".update=none \
+-c submodule."Externals/libadrenotools".update=none \
+submodule update --init --recursive \
 && git pull --recurse-submodules
 
 
