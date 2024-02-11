@@ -2,7 +2,7 @@
 cd ~/Projects/openbor/
 rm -R engine/releases
 
-git reset --hard b1676f9
+git pull
 
 
 cd engine
