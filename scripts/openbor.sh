@@ -29,6 +29,11 @@ EOF
 cat > releases/AppDir/AppRun <<\EOF
 #!/bin/bash
 mkdir -p $HOME/.local/share/OpenBOR
+rm -rf $HOME/.local/share/OpenBOR/Logs/*
+rm -rf $HOME/.local/share/OpenBOR/Musics/*
+rm -rf $HOME/.local/share/OpenBOR/Screenshots/*
+rm -rf $HOME/.local/share/OpenBOR/Translation/*
+
 cd $HOME/.local/share/OpenBOR
 ${0%/*}/usr/bin/OpenBOR
 EOF
