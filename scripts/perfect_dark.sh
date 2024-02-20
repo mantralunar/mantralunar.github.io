@@ -24,4 +24,4 @@ X-AppImage-Integrate=false
 EOF
 
 rm ~/Desktop/perfect_dark-x86_64.AppImage
-env OUTPUT=~/Desktop/perfect_dark-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --output appimage
+env OUTPUT=~/Desktop/perfect_dark-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --plugin checkrt -output appimage
