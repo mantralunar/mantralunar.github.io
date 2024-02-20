@@ -28,4 +28,4 @@ make install DESTDIR=AppDir
 
 mv AppDir/usr/share/ppsspp/assets AppDir/usr/bin/assets
 
-env OUTPUT=~/Desktop/ppsspp-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+env OUTPUT=~/Desktop/ppsspp-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
