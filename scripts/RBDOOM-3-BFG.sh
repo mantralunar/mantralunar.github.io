@@ -42,4 +42,4 @@ Comment=DOOM 3 BFG
 EOF
 
 rm -Rf ~/Desktop/RBDOOM-3-BFG-x86_64.AppImage
-env OUTPUT=~/Desktop/RBDOOM-3-BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+env OUTPUT=~/Desktop/RBDOOM-3-BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
