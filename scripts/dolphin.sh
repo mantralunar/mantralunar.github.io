@@ -32,4 +32,4 @@ Comment=A Wii/GameCube Emulator
 EOF
 
 rm -Rf ~/Desktop/dolphin-x86_64.AppImage
-env OUTPUT=~/Desktop/dolphin-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --output appimage
+env OUTPUT=~/Desktop/dolphin-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --plugin checkrt --output appimage
