@@ -31,4 +31,4 @@ ${0%/*}/usr/bin/RSDKv4
 EOF
 
 rm -f ~/Desktop/Sonic-1-2-2013-Decompilation-x86_64.AppImage
-env OUTPUT=~/Desktop/Sonic-1-2-2013-Decompilation-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --executable build/RSDKv4 --icon-file flatpak/com.sega.Sonic1.svg --output appimage
+env OUTPUT=~/Desktop/Sonic-1-2-2013-Decompilation-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --executable build/RSDKv4 --icon-file flatpak/com.sega.Sonic1.svg --plugin checkrt --output appimage
