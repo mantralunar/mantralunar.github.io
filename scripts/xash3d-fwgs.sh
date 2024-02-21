@@ -1,9 +1,4 @@
-cd ~/Projects/HL2/
-rm -Rf ~/Projects/AppDir/*
- 
-
-cd hlsdk-portable
-
+cd ~/Projects/hlsdk-portable
 git fetch origin
 git checkout master
 git reset --hard origin/master
@@ -12,9 +7,8 @@ git clean -xdf
 cmake -DCMAKE_BUILD_TYPE=Release -D64BIT=1 -B build -S .
 cmake --build build
 
-cd ..
-
-cd xash3d-fwgs
+cd ../xash3d-fwgs
+rm -rf AppDir
 git fetch origin
 git checkout master
 git reset --hard origin/master
@@ -23,13 +17,12 @@ git clean -xdf
 
 ./waf configure -T release -8
 ./waf build
-./waf install --destdir=../AppDir/usr/bin
+./waf install --destdir=AppDir/usr/bin
 
-cd ..
 mkdir -p AppDir/usr/bin/valve/cl_dlls/
-cp hlsdk-portable/build/cl_dll/client_amd64.so AppDir/usr/bin/valve/cl_dlls/client_amd64.so
+cp ../hlsdk-portable/build/cl_dll/client_amd64.so AppDir/usr/bin/valve/cl_dlls/client_amd64.so
 mkdir -p AppDir/usr/bin/valve/dlls/
-cp hlsdk-portable/build/dlls/hl_amd64.so AppDir/usr/bin/valve/dlls/hl_amd64.so
+cp ../hlsdk-portable/build/dlls/hl_amd64.so AppDir/usr/bin/valve/dlls/hl_amd64.so
 
 
 mkdir -p AppDir/usr/share/applications
