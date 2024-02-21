@@ -28,7 +28,7 @@ cp ../hlsdk-portable/build/dlls/hl_amd64.so AppDir/usr/bin/valve/dlls/hl_amd64.s
 mkdir -p AppDir/usr/share/applications
 mkdir -p AppDir/usr/share/icons/hicolor/128x128/apps/
 
-cp xash3d-fwgs/engine/platform/psvita/sce_sys/icon0.png AppDir/usr/share/icons/hicolor/128x128/apps/
+cp engine/platform/psvita/sce_sys/icon0.png AppDir/usr/share/icons/hicolor/128x128/apps/
 mkdir -p AppDir/usr/lib/
 mv AppDir/usr/bin/*.so AppDir/usr/lib/
 
