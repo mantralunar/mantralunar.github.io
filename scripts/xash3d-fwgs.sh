@@ -1,16 +1,26 @@
 cd ~/Projects/HL2/
-rm -R /Projects/HL2/*
+rm -Rf ~/Projects/AppDir/*
  
 
-git clone --recursive https://github.com/FWGS/hlsdk-portable
 cd hlsdk-portable
+
+git fetch origin
+git checkout master
+git reset --hard origin/master
+git clean -xdf
+
 cmake -DCMAKE_BUILD_TYPE=Release -D64BIT=1 -B build -S .
 cmake --build build
 
 cd ..
 
-git clone --recursive https://github.com/FWGS/xash3d-fwgs
 cd xash3d-fwgs
+git fetch origin
+git checkout master
+git reset --hard origin/master
+git clean -xdf
+
+
 ./waf configure -T release -8
 ./waf build
 ./waf install --destdir=../AppDir/usr/bin
@@ -26,6 +36,7 @@ mkdir -p AppDir/usr/share/applications
 mkdir -p AppDir/usr/share/icons/hicolor/128x128/apps/
 
 cp xash3d-fwgs/engine/platform/psvita/sce_sys/icon0.png AppDir/usr/share/icons/hicolor/128x128/apps/
+mkdir -p AppDir/usr/lib/
 mv AppDir/usr/bin/*.so AppDir/usr/lib/
 
 
@@ -53,4 +64,5 @@ export XASH3D_BASEDIR=$HOME/.local/share/xash3d/
 ${0%/*}/usr/bin/xash3d
 EOF
 
+rm ~/Desktop/xash3d-x86_64.AppImage
 env OUTPUT=~/Desktop/xash3d-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
