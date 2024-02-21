@@ -1,6 +1,6 @@
 {
 	"title": "Half-Life",
 	"target": "/run/media/mmcblk0p1/Emulators/xash3d-fwgs-x86_64.AppImage",
-	"startIn": "/run/media/mmcblk0p1/Emulators/",
+	"startIn": "/run/media/mmcblk0p1/Emulators",
 	"launchOptions": ""
 }
