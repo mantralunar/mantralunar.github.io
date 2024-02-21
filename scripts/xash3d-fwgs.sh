@@ -65,4 +65,4 @@ ${0%/*}/usr/bin/xash3d
 EOF
 
 rm ~/Desktop/xash3d-x86_64.AppImage
-env OUTPUT=~/Desktop/xash3d-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+env OUTPUT=~/Desktop/xash3d-fwgs-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
