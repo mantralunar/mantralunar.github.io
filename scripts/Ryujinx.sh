@@ -1,5 +1,5 @@
 cd ~/Projects/Ryujinx
-rm -Rf build
+rm -Rf AppDir
 git pull
 
 dotnet publish -c Release -r linux-x64 -o AppDir/usr/bin -p:DebugType=embedded -p:ExtraDefineConstants=DISABLE_UPDATER src/Ryujinx --self-contained true
