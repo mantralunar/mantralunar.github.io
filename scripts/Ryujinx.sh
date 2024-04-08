@@ -33,6 +33,6 @@ fi
 exec $COMMAND "$SCRIPT_DIR/$RYUJINX_BIN" "$@"
 EOF
 
-
+chmod +x AppDir/AppRun
 
 ARCH=x86_64 ~/appimagetool-x86_64.AppImage AppDir ~/Desktop/Ryujinx-x86_64.AppImage
