@@ -41,5 +41,12 @@ GenericName=DOOM 3 BFG
 Comment=DOOM 3 BFG
 EOF
 
+cat > AppDir/AppRun <<\EOF
+#!/bin/bash
+cd ${0%/*}/usr/bin
+./RBDoom3BFG
+EOF
+
+
 rm -Rf ~/Desktop/RBDOOM-3-BFG-x86_64.AppImage
 env OUTPUT=~/Desktop/RBDOOM-3-BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
