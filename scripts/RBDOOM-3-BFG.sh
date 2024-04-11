@@ -14,7 +14,7 @@ git submodule init
 git submodule update --recursive
 
 cd neo
-./cmake-linux-release.sh
+./cmake-linux-retail.sh
 
 cd ../build
 make
