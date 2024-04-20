@@ -1,6 +1,10 @@
 #!/bin/bash
 cd ~/Projects/dolphin
-rm -Rf Build
+
+git fetch origin
+git checkout master
+git reset --hard origin/master 
+git clean -xdf 
 git pull
 
 git -c submodule."Externals/Qt".update=none \
