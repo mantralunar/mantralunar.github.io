@@ -1,14 +1,11 @@
 #!/bin/bash
 cd ~/Projects/RBDOOM-3-BFG
 
-rm -Rf build
-
-
 git fetch origin
 git checkout master
 git reset --hard origin/master 
 git clean -xdf 
-
+git pull
 
 git submodule init
 git submodule update --recursive
