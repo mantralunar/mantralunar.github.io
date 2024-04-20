@@ -1,6 +1,4 @@
-cd ~/Projects/perfect_dark
-rm -Rf build
-git pull
+#!/bin/sh
 
 make -f Makefile.port TARGET_PLATFORM=i686-linux
 
