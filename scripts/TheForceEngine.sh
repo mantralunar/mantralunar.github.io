@@ -1,11 +1,3 @@
-cd ~/Projects/TheForceEngine
-
-git fetch origin
-git checkout master
-git reset --hard origin/master 
-git clean -xdf 
-git pull
-
 mkdir tfe-build
 cd tfe-build
 
@@ -22,5 +14,4 @@ cd ${0%/*}/usr/bin/
 ./theforceengine
 EOF
 
-rm -Rf ~/Desktop/TheForceEngine-x86_64.AppImage
-env OUTPUT=~/Desktop/TheForceEngine-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
+ ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
