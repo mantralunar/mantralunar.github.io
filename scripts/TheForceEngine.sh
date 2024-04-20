@@ -1,7 +1,9 @@
 cd ~/Projects/TheForceEngine
 
-rm -rf tfe-build
-
+git fetch origin
+git checkout master
+git reset --hard origin/master 
+git clean -xdf 
 git pull
 
 mkdir tfe-build
