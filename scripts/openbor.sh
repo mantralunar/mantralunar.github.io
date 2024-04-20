@@ -1,6 +1,5 @@
 #!/bin/sh
 cd ~/Projects/openbor/
-rm -R engine/releases
 
 git fetch origin
 git checkout master
