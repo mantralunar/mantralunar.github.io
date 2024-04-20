@@ -1,12 +1,4 @@
 #!/bin/bash
-cd ~/Projects/RBDOOM-3-BFG
-
-git fetch origin
-git checkout master
-git reset --hard origin/master 
-git clean -xdf 
-git pull
-
 git submodule init
 git submodule update --recursive
 
@@ -44,6 +36,4 @@ cd ${0%/*}/usr/bin
 ./RBDoom3BFG
 EOF
 
-
-rm -Rf ~/Desktop/RBDOOM-3-BFG-x86_64.AppImage
 env OUTPUT=~/Desktop/RBDOOM-3-BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
