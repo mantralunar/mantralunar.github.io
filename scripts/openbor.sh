@@ -2,8 +2,11 @@
 cd ~/Projects/openbor/
 rm -R engine/releases
 
+git fetch origin
+git checkout master
+git reset --hard origin/master 
+git clean -xdf 
 git pull
-
 
 cd engine
 sed -e "s|-Werror||g" -i Makefile
