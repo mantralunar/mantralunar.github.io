@@ -1,6 +1,10 @@
 #!/bin/bash
 cd ~/Projects/Sonic-1-2-2013-Decompilation/
-rm -Rf build
+
+git fetch origin
+git checkout master
+git reset --hard origin/master 
+git clean -xdf 
 git pull
 git submodule update --init
 
