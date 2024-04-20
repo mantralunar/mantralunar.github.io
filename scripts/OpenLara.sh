@@ -1,15 +1,7 @@
-cd ~/Projects/OpenLara/
-
-git fetch origin
-git checkout master
-git reset --hard origin/master
-git clean -xdf
-git pull
-
-cd ~/Projects/OpenLara/src/platform/nix
+cd src/platform/nix
 ./build.sh
 
-cd ~/Projects/OpenLara/bin/
+cd ../../../bin/
 mkdir -p AppDir/usr/share/applications/
 mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps/
 cp ../src/platform/3ds/icon.png AppDir/usr/share/icons/hicolor/256x256/apps/OpenLara.png
