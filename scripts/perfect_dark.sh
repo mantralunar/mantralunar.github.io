@@ -24,4 +24,4 @@ X-AppImage-Integrate=false
 EOF
 
 rm ~/Desktop/perfect_dark-x86_64.AppImage
-env OUTPUT=~/Desktop/perfect_dark-x86_64.AppImage ARCH=x86_64 ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --plugin checkrt32 --output appimage
+env ARCH=x86_64 ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --plugin checkrt32 --output appimage
