@@ -1,4 +1,5 @@
 #!/bin/bash
+git submodule update --init --recursive
 cmake -B build -DRETRO_DISABLE_PLUS=on
 cmake --build build --config release
 
