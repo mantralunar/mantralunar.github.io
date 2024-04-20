@@ -1,15 +1,11 @@
 #!/bin/bash
 cd ~/Projects/omnispeak
 
-rm -Rf obj
-rm -Rf bin
-rm -Rf AppDir
-
-
 git fetch origin
 git checkout master
 git reset --hard origin/master 
 git clean -xdf 
+git pull
 
 make -C ./src XDGUSERPATH=1
 
