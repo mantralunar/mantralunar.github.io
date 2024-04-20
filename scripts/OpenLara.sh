@@ -27,4 +27,4 @@ ${0%/*}/usr/bin/OpenLara
 EOF
 
 
-env OUTPUT=~/Desktop/OpenLara-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --executable OpenLara --output appimage
+ ~/linuxdeploy-x86_64.AppImage --appdir AppDir --executable OpenLara --output appimage
