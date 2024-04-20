@@ -24,4 +24,4 @@ cd $HOME/.local/share/RetroEngine/Sonic1_RSDKv4/
 ${0%/*}/usr/bin/RSDKv4
 EOF
 
-env OUTPUT=~/Desktop/Sonic-1-2-2013-Decompilation-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --executable build/RSDKv4 --icon-file flatpak/com.sega.Sonic1.svg --plugin checkrt --output appimage
+~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --executable build/RSDKv4 --icon-file flatpak/com.sega.Sonic1.svg --plugin checkrt --output appimage
