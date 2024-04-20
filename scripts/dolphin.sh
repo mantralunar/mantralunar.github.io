@@ -1,11 +1,4 @@
 #!/bin/bash
-cd ~/Projects/dolphin
-
-git fetch origin
-git checkout master
-git reset --hard origin/master 
-git clean -xdf 
-git pull
 
 git -c submodule."Externals/Qt".update=none \
 -c submodule."Externals/FFmpeg-bin".update=none \
