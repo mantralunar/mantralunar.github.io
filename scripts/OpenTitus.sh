@@ -28,4 +28,4 @@ cd $HOME/.local/share/OpenTitus
 ${0%/*}/usr/bin/opentitus
 EOF
 
-env OUTPUT=~/Desktop/OpenTitus-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir bin/AppDir --output appimage
+~/linuxdeploy-x86_64.AppImage --appdir bin/AppDir --output appimage
