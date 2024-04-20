@@ -1,8 +1,4 @@
-cd ~/Projects/hlsdk-portable
-git fetch origin
-git checkout master
-git reset --hard origin/master
-git clean -xdf
+#!/bin/sh
 
 cmake -DCMAKE_BUILD_TYPE=Release -D64BIT=1 -B build -S .
 cmake --build build
@@ -57,5 +53,4 @@ export XASH3D_BASEDIR=$HOME/.local/share/xash3d/
 ${0%/*}/usr/bin/xash3d
 EOF
 
-rm ~/Desktop/xash3d-fwgs-x86_64.AppImage
-env OUTPUT=~/Desktop/xash3d-fwgs-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
