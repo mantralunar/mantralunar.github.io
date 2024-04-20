@@ -1,14 +1,4 @@
 #!/bin/bash
-cd ~/Projects/Sonic-1-2-2013-Decompilation/
-
-git fetch origin
-git checkout master
-git reset --hard origin/master 
-git clean -xdf 
-git pull
-git submodule update --init
-
-
 cmake -B build -DRETRO_DISABLE_PLUS=on
 cmake --build build --config release
 
@@ -34,5 +24,4 @@ cd $HOME/.local/share/RetroEngine/Sonic1_RSDKv4/
 ${0%/*}/usr/bin/RSDKv4
 EOF
 
-rm -f ~/Desktop/Sonic-1-2-2013-Decompilation-x86_64.AppImage
 env OUTPUT=~/Desktop/Sonic-1-2-2013-Decompilation-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir build/AppDir/ --executable build/RSDKv4 --icon-file flatpak/com.sega.Sonic1.svg --plugin checkrt --output appimage
