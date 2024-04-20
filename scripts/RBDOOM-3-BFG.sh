@@ -36,4 +36,4 @@ cd ${0%/*}/usr/bin
 ./RBDoom3BFG
 EOF
 
-env OUTPUT=~/Desktop/RBDOOM-3-BFG-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
+~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
