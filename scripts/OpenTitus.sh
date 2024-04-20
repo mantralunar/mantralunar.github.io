@@ -1,3 +1,4 @@
+#!/bin/bash
 zig build
 
 mkdir -p bin/AppDir/usr/bin/
