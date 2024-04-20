@@ -1,11 +1,4 @@
 #!/bin/sh
-cd ~/Projects/openbor/
-
-git fetch origin
-git checkout master
-git reset --hard origin/master 
-git clean -xdf 
-git pull
 
 cd engine
 sed -e "s|-Werror||g" -i Makefile
