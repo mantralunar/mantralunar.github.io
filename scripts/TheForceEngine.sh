@@ -14,4 +14,4 @@ cd ${0%/*}/usr/bin/
 ./theforceengine
 EOF
 
- ~/linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
+ linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
