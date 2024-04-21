@@ -31,4 +31,4 @@ EOF
 
 chmod +x AppDir/AppRun
 
-ARCH=x86_64 ~/appimagetool-x86_64.AppImage AppDir ~/Desktop/Ryujinx-x86_64.AppImage
+ARCH=x86_64 appimagetool-x86_64.AppImage AppDir ~/Desktop/Ryujinx-x86_64.AppImage
