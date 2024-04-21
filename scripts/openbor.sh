@@ -35,5 +35,7 @@ cd $HOME/.local/share/OpenBOR
 ${0%/*}/usr/bin/OpenBOR
 EOF
 
+chmod +x releases/AppDir/AppRun
+
 appimagetool-x86_64.AppImage releases/AppDir/ ~/Desktop/openbor-x86_64.AppImage
 #linuxdeploy-x86_64.AppImage --appdir releases/AppDir/ --icon-file resources/OpenBOR_Icon_128x128.png --output appimage
