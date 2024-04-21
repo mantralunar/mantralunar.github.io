@@ -32,6 +32,7 @@ rm -rf $HOME/.local/share/OpenBOR/Screenshots/*
 rm -rf $HOME/.local/share/OpenBOR/Translation/*
 
 cd $HOME/.local/share/OpenBOR
+export LD_LIBRARY_PATH="${APPDIR}/usr/lib:${LD_LIBRARY_PATH}"
 ${0%/*}/usr/bin/OpenBOR
 EOF
 
