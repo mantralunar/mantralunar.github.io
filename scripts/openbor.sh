@@ -33,5 +33,4 @@ cd $HOME/.local/share/OpenBOR
 ${0%/*}/usr/bin/OpenBOR
 EOF
 
-rm -f ~/Desktop/openbor-x86_64.AppImage
-env OUTPUT=~/Desktop/openbor-x86_64.AppImage ~/linuxdeploy-x86_64.AppImage --appdir releases/AppDir/ --icon-file resources/OpenBOR_Icon_128x128.png --output appimage
+linuxdeploy-x86_64.AppImage --appdir releases/AppDir/ --icon-file resources/OpenBOR_Icon_128x128.png --output appimage
