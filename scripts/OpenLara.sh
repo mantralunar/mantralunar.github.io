@@ -27,4 +27,4 @@ ${0%/*}/usr/bin/OpenLara
 EOF
 
 
- ~/linuxdeploy-x86_64.AppImage --appdir AppDir --executable OpenLara --output appimage
+ linuxdeploy-x86_64.AppImage --appdir AppDir --executable OpenLara --output appimage
