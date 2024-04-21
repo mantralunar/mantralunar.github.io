@@ -53,4 +53,4 @@ export XASH3D_BASEDIR=$HOME/.local/share/xash3d/
 ${0%/*}/usr/bin/xash3d
 EOF
 
-~/linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
+linuxdeploy-x86_64.AppImage --appdir AppDir --output appimage
