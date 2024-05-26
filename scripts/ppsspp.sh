@@ -2,6 +2,12 @@
 
 git submodule update --init --recursive
 
+get_appimagetool() {
+	ARCH=x86_64
+	APPIMAGETOOL=$(wget -q https://api.github.com/repos/probonopd/go-appimage/releases -O - | sed 's/"/ /g; s/ /\n/g' | grep -o 'https.*continuous.*tool.*86_64.*mage$')
+	wget "$APPIMAGETOOL" -O ./appimagetool
+	chmod u+x ./appimagetool
+}
 
 mkdir Build && cd Build
 
@@ -21,7 +27,8 @@ cmake .. \
 make -j$(nproc)
 make install DESTDIR=AppDir
 
-
 mv AppDir/usr/share/ppsspp/assets AppDir/usr/bin/assets
 
-linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt --output appimage
+linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt
+get_appimagetool
+VERSION=$(./AppDir/AppRun --version) ./appimagetool -s AppDir
