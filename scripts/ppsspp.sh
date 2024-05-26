@@ -25,4 +25,5 @@ make install DESTDIR=AppDir
 mv AppDir/usr/share/ppsspp/assets AppDir/usr/bin/assets
 
 linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt
-VERSION=$(AppDir/AppRun --version) appimagetool-x86_64.AppImage -s AppDir ppsspp-x86_64.AppImage
+VERSION=$(AppDir/AppRun --version) appimagetool-x86_64.AppImage AppDir 
+mv *.AppImage ppsspp-x86_64.AppImage
