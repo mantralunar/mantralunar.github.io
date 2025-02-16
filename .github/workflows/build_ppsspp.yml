@@ -1,0 +1,64 @@
+name: Build Dolphin-Emu AppImage
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Sync every Monday at midnight UTC
+  workflow_dispatch:  # Allows manual trigger via GitHub Actions UI
+
+jobs:
+  build-in-container:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository_owner }}/my-image:latest
+      options: --privileged --device=/dev/fuse
+      
+    steps:
+      - name: Sync Repo with GitHub CLI
+        run: |
+          gh repo sync ${{ github.repository_owner }}/ppsspp --source hrydgard/ppsspp --force
+        env:
+          GH_CONFIG_DIR: /tmp/
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
+          
+      - name: Clone repository
+        run: |
+          git clone --recurse-submodules https://github.com/${{ github.repository_owner }}/ppsspp /tmp/repo
+          
+      - name: Build App
+        run: |
+          mkdir -p /tmp/repo/build
+          cd /tmp/repo/build
+          cmake .. \
+          -Wno-dev \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_SKIP_RPATH=ON \
+          -DHEADLESS=ON \
+          -DOpenGL_GL_PREFERENCE=GLVND \
+          -DUSE_SYSTEM_FFMPEG=OFF \
+          -DUSE_SYSTEM_LIBZIP=ON \
+          -DUSE_SYSTEM_SNAPPY=ON \
+          -DUSE_SYSTEM_ZSTD=ON \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DUSING_QT_UI=OFF   
+          make -j$(nproc)
+          make install DESTDIR=AppDir
+          
+      - name: Prepare AppImage
+        run: |   
+          mv /tmp/repo/build/AppDir/usr/share/ppsspp/assets /tmp/repo/build/AppDir/usr/bin/assets
+          
+      - name: Build AppImage
+        run: |
+          cd /tmp/repo/build
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
+          linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt
+          appimagetool-x86_64.AppImage AppDir
+          mv *.AppImage ppsspp-x86_64.AppImage
+          
+      - name: Create a new release in another repository
+        run: |
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
+          gh release create ppsspp-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/ppsspp /tmp/repo/build/ppsspp-x86_64.AppImage
+        env:
+          GH_CONFIG_DIR: /tmp/
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
