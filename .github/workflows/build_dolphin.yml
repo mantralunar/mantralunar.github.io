@@ -15,7 +15,6 @@ jobs:
     steps:
       - name: Sync Repo with GitHub CLI
         run: |
-          gh auth login --with-token
           gh repo sync ${{ github.repository_owner }}/dolphin --source dolphin-emu/dolphin --force
         env:
           GH_CONFIG_DIR: /tmp/
