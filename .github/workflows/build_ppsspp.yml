@@ -1,4 +1,4 @@
-name: Build Dolphin-Emu AppImage
+name: Build PPSSPP AppImage
 
 on:
   schedule:
