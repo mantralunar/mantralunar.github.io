@@ -44,7 +44,7 @@ WORKDIR /workspace
 RUN curl -L -o /usr/local/bin/linuxdeploy-x86_64.AppImage https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage && \
     curl -L -o /usr/local/bin/linuxdeploy-plugin-qt-x86_64.AppImage https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage && \
     curl -L -o /usr/local/bin/linuxdeploy-plugin-checkrt.sh https://github.com/darealshinji/linuxdeploy-plugin-checkrt/releases/download/continuous/linuxdeploy-plugin-checkrt.sh && \
-    curl -L -o /usr/local/bin/appimagetool-x86_64.AppImage https://github.com/probonopd/go-appimage/releases/download/continuous/appimagetool-860-x86_64.AppImage
+    curl -L -o /usr/local/bin/appimagetool-x86_64.AppImage https://github.com/probonopd/go-appimage/releases/download/continuous/appimagetool-869-x86_64.AppImage
 
 # Mark the files as executable
 RUN chmod +x /usr/local/bin/linuxdeploy-x86_64.AppImage && \
