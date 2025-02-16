@@ -35,6 +35,7 @@ RUN dnf update -y && \
     libcurl-devel \
     glew-devel \
     libzstd-devel \
+    gh \
     && dnf clean all
 
 # Set the working directory
