@@ -1,0 +1,62 @@
+name: Sync Fork with Upstream
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # Sync every Monday at midnight UTC
+  workflow_dispatch:  # Allows manual trigger via GitHub Actions UI
+
+jobs:
+  build-in-container:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository_owner }}/my-image:latest
+      options: --privileged --device=/dev/fuse
+      
+    steps:
+      - name: Clone repository
+        run: |
+          git clone --recurse-submodules https://github.com/${{ github.repository }} /tmp/repo
+          
+      - name: Build App
+        run: |
+          mkdir -p /tmp/repo/build
+          cd /tmp/repo/build
+          cmake .. -DLINUX_LOCAL_DEV=true -DCMAKE_INSTALL_PREFIX=/usr
+          make -j$(nproc)
+          make install DESTDIR=AppDir
+          
+      - name: Prepare AppImage
+        run: |   
+          mv /tmp/repo/build/AppDir/usr/share/dolphin-emu/sys /tmp/repo/build/AppDir/usr/bin/Sys
+          cat > /tmp/repo/build/AppDir/usr/share/applications/dolphin-emu.desktop <<\EOF
+          [Desktop Entry]
+          Version=1.0
+          Icon=dolphin-emu
+          Exec=dolphin-emu
+          Terminal=false
+          Type=Application
+          Categories=Game;Emulator;
+          Name=Dolphin Emulator
+          GenericName=Wii/GameCube Emulator
+          Comment=A Wii/GameCube Emulator
+          EOF
+          
+      - name: Build AppImage
+        run: |
+          cd /tmp/repo/build
+          VERSION=$(git -C . rev-parse --short=7 HEAD)
+          linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --plugin checkrt
+          appimagetool-x86_64.AppImage AppDir
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: /tmp/repo/build/AppDir  # Change this to match your build output directory
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}  # Generates an incremental version
+          files: /tmp/repo/build/AppDir/*.AppImage  # Modify to match your build output
+          token: ${{ secrets.GITHUB_TOKEN }}
