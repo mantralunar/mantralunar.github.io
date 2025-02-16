@@ -1,11 +1,7 @@
 name: Build and Push Docker Image to GitHub Container Registry
 
 on:
-  push:
-    branches:
-      - main  # Trigger the workflow when changes are pushed to the main branch
-    tags:
-      - 'v*'  # Trigger the workflow on version tags (e.g., v1.0.0)
+  workflow_dispatch:  # Allows manual trigger via GitHub Actions UI
 
 jobs:
   build:
