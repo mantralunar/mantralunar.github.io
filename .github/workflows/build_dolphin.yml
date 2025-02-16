@@ -18,7 +18,7 @@ jobs:
           gh repo sync ${{ github.repository_owner }}/dolphin --source dolphin-emu/dolphin --force
         env:
           GH_CONFIG_DIR: /tmp/
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
           
       - name: Clone repository
         run: |
@@ -61,4 +61,4 @@ jobs:
           gh release create dolphin-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/dolphin dolphin-x86_64.AppImage
         env:
           GH_CONFIG_DIR: /tmp/
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
