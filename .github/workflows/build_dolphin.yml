@@ -17,7 +17,7 @@ jobs:
         run: |
           if [ "$(git ls-remote https://github.com/dolphin-emu/dolphin master |  head -n 1 | cut -c1-7)" == "$(git ls-remote https://github.com/${{ github.repository_owner }}/dolphin master |  head -n 1 | cut -c1-7)" ]; then
             echo "Repositories are already synced. Stopping workflow."
-            exit 0
+            exit 1
           fi
 
       - name: Sync Repo with GitHub CLI
