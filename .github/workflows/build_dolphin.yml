@@ -15,6 +15,10 @@ jobs:
     steps:
       - name: Sync Repo with GitHub CLI
         run: |
+          [ "$(git ls-remote https://github.com/${{ github.repository_owner }}/dolphin HEAD | awk '{print $1}')" == "$(git ls-remote https://github.com/dolphin-emu/dolphin HEAD | awk '{print $1}')" ] && echo "Repositories are in sync." && exit 1 || echo "Repositories are NOT in sync." && exit 0
+
+      - name: Sync Repo with GitHub CLI
+        run: |
           gh repo sync ${{ github.repository_owner }}/dolphin --source dolphin-emu/dolphin --force
         env:
           GH_CONFIG_DIR: /tmp/
