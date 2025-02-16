@@ -13,16 +13,14 @@ jobs:
       options: --privileged --device=/dev/fuse
       
     steps:
-      - name: Authenticate with GitHub CLI
-        run: gh auth login --with-token
+      - name: Sync Repo with GitHub CLI
+        run: |
+          gh auth login --with-token
+          gh repo sync ${{ github.repository_owner }}/dolphin --source dolphin-emu/dolphin --force
         env:
           GH_CONFIG_DIR: /tmp/
           GH_TOKEN: ${{ github.token }}
-
-      - name: Resync repository
-        run: |
-          gh repo sync ${{ github.repository_owner }}/dolphin --source dolphin-emu/dolphin --force
-
+          
       - name: Clone repository
         run: |
           git clone --recurse-submodules https://github.com/${{ github.repository_owner }}/dolphin /tmp/repo
@@ -62,3 +60,6 @@ jobs:
         run: |
           VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
           gh release create dolphin-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/dolphin dolphin-x86_64.AppImage
+        env:
+          GH_CONFIG_DIR: /tmp/
+          GH_TOKEN: ${{ github.token }}
