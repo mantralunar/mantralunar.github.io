@@ -1,4 +1,4 @@
-name: Sync Fork with Upstream
+name: Build Dolphin-Emu AppImage
 
 on:
   schedule:
