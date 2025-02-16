@@ -2,7 +2,7 @@ name: Build Dolphin-Emu AppImage
 
 on:
   schedule:
-    - cron: '0 0 * * 1'  # Sync every Monday at midnight UTC
+  - cron: '0 0 * * *'  # Runs at midnight UTC every day
   workflow_dispatch:  # Allows manual trigger via GitHub Actions UI
 
 jobs:
@@ -16,8 +16,8 @@ jobs:
       - name: Check if Repos are in Sync
         run: |
           if [ "$(git ls-remote https://github.com/dolphin-emu/dolphin master |  head -n 1 | cut -c1-7)" == "$(git ls-remote https://github.com/${{ github.repository_owner }}/dolphin master |  head -n 1 | cut -c1-7)" ]; then
-          echo "### Repositories are already synced. Stopping workflow." >> $GITHUB_STEP_SUMMARY
-          exit 0
+            echo "Repositories are already synced. Stopping workflow."
+            exit 0
           fi
 
       - name: Sync Repo with GitHub CLI
