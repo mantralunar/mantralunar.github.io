@@ -51,10 +51,11 @@ jobs:
       - name: Build AppImage
         run: |
           cd /tmp/repo/build
-          VERSION=$(git -C . rev-parse --short=7 HEAD)
+          VERSION=$(git -C .. rev-parse --short=7 HEAD)
           linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --plugin checkrt
           appimagetool-x86_64.AppImage AppDir
-
+          mv *.AppImage dolphin-x86_64.AppImage
+          
       - name: Create a new release in another repository
         run: |
           VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
