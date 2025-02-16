@@ -14,10 +14,11 @@ jobs:
       
     steps:
       - name: Authenticate with GitHub CLI
-        run: echo "${{ secrets.GHCR_PAT }}" | gh auth login --with-token
+        run: gh auth login --with-token
         env:
           GH_CONFIG_DIR: /tmp/
-          
+          GH_TOKEN: ${{ github.token }}
+
       - name: Resync repository
         run: |
           gh repo sync ${{ github.repository_owner }}/dolphin --source dolphin-emu/dolphin --force
