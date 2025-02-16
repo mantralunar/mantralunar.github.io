@@ -51,15 +51,15 @@ jobs:
       - name: Build AppImage
         run: |
           cd /tmp/repo/build
-          VERSION=$(git -C .. rev-parse --short=7 HEAD)
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
           linuxdeploy-x86_64.AppImage --appdir AppDir --plugin qt --plugin checkrt
           appimagetool-x86_64.AppImage AppDir
           mv *.AppImage dolphin-x86_64.AppImage
           
       - name: Create a new release in another repository
         run: |
-          VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
-          gh release create dolphin-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/dolphin dolphin-x86_64.AppImage
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
+          gh release create dolphin-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/dolphin /tmp/repo/build/dolphin-x86_64.AppImage
         env:
           GH_CONFIG_DIR: /tmp/
           GH_TOKEN: ${{ secrets.GHCR_PAT }}
