@@ -26,6 +26,7 @@ jobs:
           
       - name: Build App
         run: |
+          cd /tmp/repo
           cmake -G"Unix Makefiles" -Bbuild .
           cmake --build build -j4
           
