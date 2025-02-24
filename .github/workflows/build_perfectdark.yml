@@ -13,13 +13,6 @@ jobs:
       options: --privileged --device=/dev/fuse
 
     steps:
-      - name: Check if Repos are in Sync
-        run: |
-          if [ "$(git ls-remote https://github.com/fgsfdsfgs/perfect_dark port |  head -n 1 | cut -c1-7)" == "$(git ls-remote https://github.com/${{ github.repository_owner }}/perfect_dark port |  head -n 1 | cut -c1-7)" ]; then
-            echo "Repositories are already synced. Stopping workflow."
-            exit 1
-          fi
-
       - name: Sync Repo with GitHub CLI
         run: |
           gh repo sync ${{ github.repository_owner }}/perfect_dark --source fgsfdsfgs/perfect_dark --force
