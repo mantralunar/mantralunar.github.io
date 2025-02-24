@@ -1,4 +1,4 @@
-name: Build PPSSPP AppImage
+name: Build Perfect Dark AppImage
 
 on:
   schedule:
@@ -45,7 +45,7 @@ jobs:
           [Desktop Entry]
           Version=1.0
           Name=Perfect Dark
-          Exec=pd
+          Exec=pd.x86_64
           Terminal=false
           Icon=pd
           Type=Application
