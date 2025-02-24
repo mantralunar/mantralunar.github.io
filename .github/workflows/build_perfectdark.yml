@@ -1,0 +1,72 @@
+name: Build PPSSPP AppImage
+
+on:
+  schedule:
+  - cron: '0 0 * * *'  # Runs at midnight UTC every day
+  workflow_dispatch:  # Allows manual trigger via GitHub Actions UI
+
+jobs:
+  build-in-container:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository_owner }}/my-image:latest
+      options: --privileged --device=/dev/fuse
+
+    steps:
+      - name: Check if Repos are in Sync
+        run: |
+          if [ "$(git ls-remote https://github.com/fgsfdsfgs/perfect_dark port |  head -n 1 | cut -c1-7)" == "$(git ls-remote https://github.com/${{ github.repository_owner }}/perfect_dark port |  head -n 1 | cut -c1-7)" ]; then
+            echo "Repositories are already synced. Stopping workflow."
+            exit 1
+          fi
+
+      - name: Sync Repo with GitHub CLI
+        run: |
+          gh repo sync ${{ github.repository_owner }}/perfect_dark --source fgsfdsfgs/perfect_dark --force
+        env:
+          GH_CONFIG_DIR: /tmp/
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
+          
+      - name: Clone repository
+        run: |
+          git clone --recurse-submodules https://github.com/${{ github.repository_owner }}/perfect_dark /tmp/repo
+          
+      - name: Build App
+        run: |
+          cmake -G"Unix Makefiles" -Bbuild .
+          cmake --build build -j4
+          
+      - name: Prepare AppImage
+        run: |   
+          mkdir -p /tmp/repo/AppDir/usr/bin/
+          mv /tmp/repo/build/pd.x86_64 /tmp/repo/AppDir/usr/bin/
+          mkdir -p /tmp/repo/AppDir/usr/share/applications/
+          cat > /tmp/repo/AppDir/usr/share/applications/pd.desktop <<\EOF
+          [Desktop Entry]
+          Version=1.0
+          Name=Perfect Dark
+          Exec=pd
+          Terminal=false
+          Icon=pd
+          Type=Application
+          Categories=Game;
+          X-AppImage-Integrate=false
+          EOF
+          mkdir -p /tmp/repo/AppDir/usr/share/icons/hicolor/512x512/apps
+          curl -L https://cdn2.steamgriddb.com/icon/c4a8744c537cc4c5c147292d6ca84144/32/256x256.png -o /tmp/repo/AppDir/usr/share/icons/hicolor/512x512/apps/pd.png
+
+      - name: Build AppImage
+        run: |
+          cd /tmp/repo/build
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
+          linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt
+          appimagetool-x86_64.AppImage AppDir
+          mv *.AppImage perfect_dark-x86_64.AppImage
+          
+      - name: Create a new release in another repository
+        run: |
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
+          gh release create perfect_dark-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/perfect_dark /tmp/repo/perfect_dark-x86_64.AppImage
+        env:
+          GH_CONFIG_DIR: /tmp/
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
