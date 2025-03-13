@@ -23,7 +23,7 @@ jobs:
       - name: Clone repository
         run: |
           git clone --recurse-submodules https://github.com/${{ github.repository_owner }}/TheForceEngine /tmp/repo
-          
+
       - name: Build App
         run: |
           cd /tmp/repo
@@ -32,7 +32,7 @@ jobs:
           cmake -S .. -DDISABLE_SYSMIDI=ON -DCMAKE_INSTALL_PREFIX=/usr
           make -j$(nproc)
           make install DESTDIR=/tmp/AppDir
-          
+
       - name: Prepare AppImage
         run: |   
           mv /tmp/AppDir/usr/share/TheForceEngine/* /tmp/AppDir/usr/bin/
@@ -45,7 +45,7 @@ jobs:
           linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt
           appimagetool-x86_64.AppImage AppDir
           mv *.AppImage TheForceEngine-x86_64.AppImage
-          
+
       - name: Create a new release in another repository
         run: |
           export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
