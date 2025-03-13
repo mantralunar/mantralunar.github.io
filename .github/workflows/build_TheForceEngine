@@ -1,0 +1,55 @@
+name: Build TheForceEngine AppImage
+
+on:
+  schedule:
+  - cron: '0 0 * * *'  # Runs at midnight UTC every day
+  workflow_dispatch:  # Allows manual trigger via GitHub Actions UI
+
+jobs:
+  build-in-container:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository_owner }}/my-image:latest
+      options: --privileged --device=/dev/fuse
+
+    steps:
+      - name: Sync Repo with GitHub CLI
+        run: |
+          gh repo sync ${{ github.repository_owner }}/TheForceEngine --source luciusDXL/TheForceEngine --force
+        env:
+          GH_CONFIG_DIR: /tmp/
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
+          
+      - name: Clone repository
+        run: |
+          git clone --recurse-submodules https://github.com/${{ github.repository_owner }}/TheForceEngine /tmp/repo
+          
+      - name: Build App
+        run: |
+          cd /tmp/repo
+          mkdir tfe-build
+          cd tfe-build
+          cmake -S .. -DDISABLE_SYSMIDI=ON -DCMAKE_INSTALL_PREFIX=/usr
+          make -j$(nproc)
+          make install DESTDIR=/tmp/AppDir
+          
+      - name: Prepare AppImage
+        run: |   
+          mv /tmp/AppDir/usr/share/TheForceEngine/* /tmp/AppDir/usr/bin/
+          rmdir /tmp/AppDir/usr/share/TheForceEngine
+
+      - name: Build AppImage
+        run: |
+          cd /tmp/repo
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
+          linuxdeploy-x86_64.AppImage --appdir AppDir --plugin checkrt
+          appimagetool-x86_64.AppImage AppDir
+          mv *.AppImage TheForceEngine-x86_64.AppImage
+          
+      - name: Create a new release in another repository
+        run: |
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
+          gh release create perfect_dark-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/TheForceEngine /tmp/TheForceEngine-x86_64.AppImage
+        env:
+          GH_CONFIG_DIR: /tmp/
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
