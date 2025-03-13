@@ -36,6 +36,7 @@ RUN dnf update -y && \
     glew-devel \
     libzstd-devel \
     gh \
+    SDL2_image-devel \
     && dnf clean all
 
 # Set the working directory
