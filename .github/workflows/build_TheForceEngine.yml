@@ -29,7 +29,7 @@ jobs:
           cd /tmp/repo
           mkdir tfe-build
           cd tfe-build
-          cmake -S .. -DDISABLE_SYSMIDI=ON -DCMAKE_INSTALL_PREFIX=/usr
+          cmake -S .. -DDISABLE_SYSMIDI=ON -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_FORCE_SCRIPT=ON -DENABLE_EDITOR=ON
           make -j$(nproc)
           make install DESTDIR=/tmp/AppDir
 
