@@ -49,7 +49,7 @@ jobs:
       - name: Create a new release in another repository
         run: |
           export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
-          gh release create perfect_dark-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/TheForceEngine /tmp/TheForceEngine-x86_64.AppImage
+          gh release create TheForceEngine-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/TheForceEngine /tmp/TheForceEngine-x86_64.AppImage
         env:
           GH_CONFIG_DIR: /tmp/
           GH_TOKEN: ${{ secrets.GHCR_PAT }}
