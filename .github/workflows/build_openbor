@@ -1,0 +1,52 @@
+name: Build OpenBor AppImage
+
+on:
+  schedule:
+  - cron: '0 0 * * *'  # Runs at midnight UTC every day
+  workflow_dispatch:  # Allows manual trigger via GitHub Actions UI
+
+jobs:
+  build-in-container:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository_owner }}/my-image:latest
+      options: --privileged --device=/dev/fuse
+
+    steps:
+      - name: Sync Repo with GitHub CLI
+        run: |
+          gh repo sync ${{ github.repository_owner }}/openbor --source DCurrent/openbor --force
+        env:
+          GH_CONFIG_DIR: /tmp/
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
+          
+      - name: Clone repository
+        run: |
+          git clone --recurse-submodules https://github.com/${{ github.repository_owner }}/openbor /tmp/repo
+
+      - name: Build App
+        run: |
+          cd /tmp/repo/engine
+          sed -e "s|-Werror||g" -i Makefile
+          ./build.sh 4 amd64
+
+      - name: Prepare AppImage
+        run: |   
+          mkdir -p /tmp/AppDir/usr/bin
+          cp /tmp/repo/engine/releases/LINUX_AMD64/OpenBOR/OpenBOR /tmp/AppDir/usr/bin
+
+      - name: Build AppImage
+        run: |
+          cd /tmp/
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
+          linuxdeploy-x86_64.AppImage --i /tmp/repo/engine/resources/OpenBOR_Icon_128x128.png --appdir AppDir --plugin checkrt 
+          appimagetool-x86_64.AppImage AppDir
+          mv *.AppImage OpenBOR-x86_64.AppImage
+
+      - name: Create a new release in another repository
+        run: |
+          export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
+          gh release create OpenBOR-$VERSION-x86_64 --generate-notes -R ${{ github.repository_owner }}/openbor /tmp/OpenBOR-x86_64.AppImage
+        env:
+          GH_CONFIG_DIR: /tmp/
+          GH_TOKEN: ${{ secrets.GHCR_PAT }}
