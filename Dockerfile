@@ -31,6 +31,10 @@ RUN dnf update -y && \
     mesa-libGL-devel \
     SDL2-devel \
     SDL2_ttf-devel \
+    SDL2_gfx-devel \
+    libpng-devel \
+    libvorbis-devel \
+    libvpx-devel \
     fontconfig-devel \
     libcurl-devel \
     glew-devel \
