@@ -28,6 +28,7 @@ jobs:
         run: |
           cd /tmp/repo/engine
           sed -e "s|-Werror||g" -i Makefile
+          sed -i -e 's:source/gfxlib/2xSaI.*\.o::' -e 's:source/gfxlib/hq2x.*\.o::' Makefile
           ./build.sh 4 amd64
 
       - name: Prepare AppImage
