@@ -34,13 +34,14 @@ jobs:
       - name: Prepare AppImage
         run: |   
           mkdir -p /tmp/AppDir/usr/bin
+          ls /tmp/repo/engine/releases/LINUX_AMD64/OpenBOR/OpenBOR
           cp /tmp/repo/engine/releases/LINUX_AMD64/OpenBOR/OpenBOR /tmp/AppDir/usr/bin
 
       - name: Build AppImage
         run: |
           cd /tmp/
           export VERSION=$(git -C /tmp/repo/ rev-parse --short=7 HEAD)
-          linuxdeploy-x86_64.AppImage --i /tmp/repo/engine/resources/OpenBOR_Icon_128x128.png --appdir AppDir --plugin checkrt 
+          linuxdeploy-x86_64.AppImage --create-desktop-file -i /tmp/repo/engine/resources/OpenBOR_Icon_128x128.png --appdir AppDir --plugin checkrt 
           appimagetool-x86_64.AppImage AppDir
           mv *.AppImage OpenBOR-x86_64.AppImage
 
