@@ -41,6 +41,7 @@ RUN dnf update -y && \
     libzstd-devel \
     gh \
     SDL2_image-devel \
+    premake \
     && dnf clean all
 
 # Set the working directory
