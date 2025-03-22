@@ -42,6 +42,10 @@ RUN dnf update -y && \
     gh \
     SDL2_image-devel \
     premake \
+    glibc-devel.i686 \
+    libjpeg-turbo-devel.i686 \
+    openal-soft-devel.i686 \
+    SDL2-devel.i686 \
     && dnf clean all
 
 # Set the working directory
